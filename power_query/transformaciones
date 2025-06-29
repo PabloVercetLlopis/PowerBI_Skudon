@@ -1,0 +1,30 @@
+let
+    Origen = Excel.Workbook(File.Contents("C:\0-Pablo\PABLO\Pablo\Desktop\Cursos\Power BI\Proyecto3_SKU-DON\Datos+Empleados.xlsx"), null, true),
+    #"Tabla Empleados_Sheet" = Origen{[Item="Tabla Empleados",Kind="Sheet"]}[Data],
+    #"Encabezados promovidos" = Table.PromoteHeaders(#"Tabla Empleados_Sheet", [PromoteAllScalars=true]),
+    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"ID Empleado", Int64.Type}, {"Nombre Empleado", type text}, {"Estado", type text}, {"Nacimiento", type date}, {"Género", type text}, {"Departamento", type text}, {"Posición", type text}, {"Nombre Jefe", type text}}),
+    #"Valor reemplazado" = Table.ReplaceValue(#"Tipo cambiado","Female","Mujer",Replacer.ReplaceText,{"Género"}),
+    #"Valor reemplazado1" = Table.ReplaceValue(#"Valor reemplazado","Male","Hombre",Replacer.ReplaceText,{"Género"}),
+    #"Dividir columna por delimitador" = Table.SplitColumn(#"Valor reemplazado1", "Nombre Empleado", Splitter.SplitTextByDelimiter(", ", QuoteStyle.None), {"Nombre Empleado.1", "Nombre Empleado.2"}),
+    #"Tipo cambiado1" = Table.TransformColumnTypes(#"Dividir columna por delimitador",{{"Nombre Empleado.1", type text}, {"Nombre Empleado.2", type text}}),
+    #"Columnas combinadas" = Table.CombineColumns(#"Tipo cambiado1",{"Nombre Empleado.2", "Nombre Empleado.1"},Combiner.CombineTextByDelimiter(" ", QuoteStyle.None),"Nombre empleado")
+in
+    #"Columnas combinadas"
+
+
+    let
+    Origen = Excel.Workbook(File.Contents("C:\0-Pablo\PABLO\Pablo\Desktop\Cursos\Power BI\Proyecto3_SKU-DON\Datos+Empleados.xlsx"), null, true),
+    #"Tabla Evaluacion_Sheet" = Origen{[Item="Tabla Evaluacion",Kind="Sheet"]}[Data],
+    #"Encabezados promovidos" = Table.PromoteHeaders(#"Tabla Evaluacion_Sheet", [PromoteAllScalars=true]),
+    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"ID Empleado", Int64.Type}, {"Evaluación", type number}})
+in
+    #"Tipo cambiado"
+
+
+    let
+    Origen = Excel.Workbook(File.Contents("C:\0-Pablo\PABLO\Pablo\Desktop\Cursos\Power BI\Proyecto3_SKU-DON\Datos+Empleados.xlsx"), null, true),
+    #"Tabla Sueldo_Sheet" = Origen{[Item="Tabla Sueldo",Kind="Sheet"]}[Data],
+    #"Encabezados promovidos" = Table.PromoteHeaders(#"Tabla Sueldo_Sheet", [PromoteAllScalars=true]),
+    #"Tipo cambiado" = Table.TransformColumnTypes(#"Encabezados promovidos",{{"ID Empleado", Int64.Type}, {"Sueldo", Int64.Type}})
+in
+    #"Tipo cambiado"
