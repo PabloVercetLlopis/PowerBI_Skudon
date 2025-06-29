@@ -64,18 +64,22 @@ Todas estas métricas han sido creadas con medidas DAX reutilizables.
 
 PowerBI_skudon/
 │
+
 ├─ Data/
 
 │ ├─ Datos+Empleados.xlsx
 │
+
 ├─ PowerBI/
 
 │ └─ Proyecto3_Reporte de RRHH.pbix
 │
+
 ├─ power_query/
 
 │ └─ transformaciones
 │
+
 ├─ Visualizaciones/
 
 │ └─ Analisis sueldos.png
