@@ -65,18 +65,25 @@ Todas estas métricas han sido creadas con medidas DAX reutilizables.
 PowerBI_skudon/
 │
 ├─ Data/
-│ ├─ ventas.xlsx
-│ ├─ productos.xlsx
-│ ├─ clientes.xlsx
-│ └─ canales.xlsx
+
+│ ├─ Datos+Empleados.xlsx
 │
 ├─ PowerBI/
-│ └─ Proyecto3_Skudon.pbix
+
+│ └─ Proyecto3_Reporte de RRHH.pbix
 │
 ├─ power_query/
-│ └─ medidas.md
+
+│ └─ transformaciones
 │
 ├─ Visualizaciones/
-│ └─ captura_dashboard.png
-│
+
+│ └─ Analisis sueldos.png
+
+│ └─ Background.png
+
+│ └─ TotalColaboradores.png
+
+│ └─ evaluacion desempeño.png
+
 └─ README.md
